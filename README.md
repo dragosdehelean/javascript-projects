@@ -4,4 +4,4 @@
 
 Trainer: Dragos Dehelean
 
-* [Simple JavaScript Slideshow](https://dragosdehelean.github.io/simple-js-slideshow/)
+* [Simple JavaScript Slideshow](https://dragosdehelean.github.io/javascript-projects/modul6.4/)
