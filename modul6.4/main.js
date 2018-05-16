@@ -1,10 +1,4 @@
-
-let index = 0;
-
-const forward = document.getElementById("inainte");
-const img = document.querySelector("#slide");
-const meniu = document.querySelector("#meniu");
-
+// sursa de date pe care o primim impreuna cu imaginile din directorul img
 const images = [
     { "src": "img1.jpg", "alt": "1 Nature" },
     { "src": "img2.jpg", "alt": "2 Fjords" }, 
@@ -12,30 +6,35 @@ const images = [
     { "src": "img4.jpg", "alt": "4 Lights" }
 ];
 
-function showImage(currIndex){
+// obtine referintele la tag-urile HTML existente 
+// (tag-ul img si div-ul in care vom crea meniul de bilute)
+const img = document.querySelector("#slide");
+const meniu = document.querySelector("#meniu");
+
+// variabila globala pe care o vom folosi pt a obtine in fiecare moment
+// indexul imaginii pe care vrem s-o afisam
+let index = 0;
+
+// functie care afiseaza imaginea curenta
+function showImage(localIndex){
+    
     // verifica daca se depaseste marginea / daca da merge in cerc
-    if (currIndex === images.length){
-        currIndex = 0;
-    } else if(currIndex === -1){
-        currIndex = images.length-1;
+    if (localIndex === images.length){
+        localIndex = 0;
+    } else if( localIndex === -1 ){
+        localIndex = images.length-1;
     }    
 
-    //afiseaza imaginea dorita
-    img.src = 'img/' + images[currIndex].src;
-    img.alt = images[currIndex].alt;
-    img.title = images[currIndex].alt;
-
-    // if(currIndex === images.length - 1){
-    //     //forward.hidden = true; 
-    // } else {        
-    //     //forward.hidden = false;
-    // }
+    //afiseaza imaginea dorita. Ii completeaza atributele cu valori
+    img.src = 'img/' + images[localIndex].src;
+    img.alt = images[localIndex].alt;
+    img.title = images[localIndex].alt;
     
     //actualizeaza variabila globala cu valoarea locala
-    index = currIndex;
+    index = localIndex;
 }
 
-function meniuBilute(currIndex){
+function meniuBilute(localIndex){
     //reseteaza meniu existent anterior
     meniu.innerHTML = '';
     for (let i=0; i< images.length; i++){
@@ -43,7 +42,7 @@ function meniuBilute(currIndex){
         biluta = document.createElement("span");
         biluta.id = "biluta" + (i+1);
         biluta.classList.add('biluta');
-        if (i === currIndex){
+        if (i === localIndex){
             biluta.classList.add('activ');
         }
         // biluta.addEventListener( "click", makeBilutaCallback(i) );
@@ -55,7 +54,7 @@ function meniuBilute(currIndex){
         meniu.appendChild(biluta); 
     }
 
-    index = currIndex;
+    index = localIndex;
 }
 
 // factory function care intoarce o functie anonima pe post de event handler
@@ -71,11 +70,13 @@ window.addEventListener("load", function(){
     meniuBilute(index);
 });
 
+//obtine o referinta la butonul "inainte" si ii ataseaza un event handler
 document.getElementById("inainte").addEventListener("click", function(){ 
     showImage(++index); 
     meniuBilute(index);
 });
 
+//obtine o referinta la butonul "inapoi" si ii ataseaza un event handler
 document.getElementById("inapoi").addEventListener("click", function(){ 
     showImage(--index); 
     meniuBilute(index);
