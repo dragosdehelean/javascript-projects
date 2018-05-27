@@ -15,7 +15,9 @@ const meniu = document.querySelector("#meniu");
 // indexul imaginii pe care vrem s-o afisam
 let index = 0;
 
-// functie care afiseaza imaginea curenta
+
+/* Functia care afiseaza imaginea curenta */
+
 function showImage(localIndex){
     
     // verifica daca se depaseste marginea / daca da merge in cerc
@@ -34,18 +36,22 @@ function showImage(localIndex){
     index = localIndex;
 }
 
+/* Functia care afiseaza meniul de bilute */
+
 function meniuBilute(localIndex){
     //reseteaza meniu existent anterior
     meniu.innerHTML = '';
     for (let i=0; i< images.length; i++){
-        //creeaza nodul virtual cu atribute si event listener
+        
+        //creeaza nodul virtual cu atributele lui (id, title, adauga o noua clasa)
         biluta = document.createElement("span");
         biluta.id = "biluta" + (i+1);
+        biluta.title = images[i].alt;
         biluta.classList.add('biluta');
         if (i === localIndex){
             biluta.classList.add('activ');
         }
-        // biluta.addEventListener( "click", makeBilutaCallback(i) );
+        
         biluta.addEventListener( "click", function(){
             showImage(i);
             meniuBilute(i);    
@@ -57,7 +63,8 @@ function meniuBilute(localIndex){
     index = localIndex;
 }
 
-// factory function care intoarce o functie anonima pe post de event handler
+/* Functie factory care intoarce o functie anonima pe post de event handler */
+
 function makeBilutaCallback(index){
     return function(){
         showImage(index);
@@ -65,18 +72,19 @@ function makeBilutaCallback(index){
     }
 }
 
+// afiseaza imaginea curenta si meniul de bilute in momentul incarcarii paginii
 window.addEventListener("load", function(){ 
     showImage(index);
     meniuBilute(index);
 });
 
-//obtine o referinta la butonul "inainte" si ii ataseaza un event handler
+// obtine o referinta la butonul "inainte" si ii ataseaza un event handler
 document.getElementById("inainte").addEventListener("click", function(){ 
     showImage(++index); 
     meniuBilute(index);
 });
 
-//obtine o referinta la butonul "inapoi" si ii ataseaza un event handler
+// obtine o referinta la butonul "inapoi" si ii ataseaza un event handler
 document.getElementById("inapoi").addEventListener("click", function(){ 
     showImage(--index); 
     meniuBilute(index);
