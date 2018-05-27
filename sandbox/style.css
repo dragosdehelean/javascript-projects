@@ -1,0 +1,27 @@
+.meeting {
+    background-color: #f1f1f1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px #c8c8c8 solid;
+}
+.right3 {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    font-family: 'Roboto', sans-serif;
+    overflow: scroll;
+}
+.meeting-left {
+    display: flex;
+    flex-direction: column;
+    padding: 2vmin 3vmin;
+}
+.card-title {
+    color: red;
+    /* color: #cc0043; */
+    font-size: 2.7vmin;
+    font-weight: 500;
+    padding: 5px 0;
+}
+img{
+  width: 5vmin;
+}
