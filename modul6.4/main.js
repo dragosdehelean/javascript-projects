@@ -16,8 +16,12 @@ const meniu = document.querySelector("#meniu");
 let index = 0;
 
 
-/* Functia care afiseaza imaginea curenta */
-
+/**
+ * Functia care afiseaza imaginea curenta 
+ * 
+ * @param {number} localIndex - 
+ *  
+ */
 function showImage(localIndex){
     
     // verifica daca se depaseste marginea / daca da merge in cerc
@@ -31,16 +35,19 @@ function showImage(localIndex){
     img.src = 'img/' + images[localIndex].src;
     img.alt = images[localIndex].alt;
     img.title = images[localIndex].alt;
-    
+    P
     //actualizeaza variabila globala cu valoarea locala
     index = localIndex;
 }
 
-/* Functia care afiseaza meniul de bilute */
-
+/**
+ *  Functia care afiseaza meniul de bilute 
+ */
 function meniuBilute(localIndex){
+    
     //reseteaza meniu existent anterior
     meniu.innerHTML = '';
+
     for (let i=0; i< images.length; i++){
         
         //creeaza nodul virtual cu atributele lui (id, title, adauga o noua clasa)
@@ -63,7 +70,11 @@ function meniuBilute(localIndex){
     index = localIndex;
 }
 
-/* Functie factory care intoarce o functie anonima pe post de event handler */
+/**
+ * Functie factory care intoarce o functie anonima pe post de event handler 
+ * (pentru cazul in care n-am fi folosit let in for-ul din functia meniuBilute)
+ * 
+ */
 
 function makeBilutaCallback(index){
     return function(){
