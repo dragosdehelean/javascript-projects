@@ -10,9 +10,10 @@ const listFin = document.querySelector("#fin");
 function addItem() {
     
     // creaza un nou element <li> si ii pune continutul din input 
-    var el = document.createElement("li");
-    var span = document.createElement("span");
-    
+    const el = document.createElement("li");
+    el.classList.add("mb-3");
+
+    const span = document.createElement("span");    
     span.textContent = input.value;
     span.classList.add("mr-3");
     
@@ -84,14 +85,12 @@ function editItem(){
 }
 
 function submitItem(){ 
-
     const arr = Array.from(document.querySelectorAll("#fin li"));
     
     const item = document.createElement("li");
     item.innerHTML = this.parentNode.firstChild.innerHTML;
     arr.push(item);
     
-    //console.dir(arr);
     arr.sort(function(a,b){
         return a.innerHTML > b.innerHTML ? 1 : -1;
     });
