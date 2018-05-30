@@ -20,6 +20,9 @@ let index = 0;
  * Functia care afiseaza imaginea curenta 
  * 
  * @param {number} localIndex - 
+ * 
+ * 
+ * 
  *  
  */
 function showImage(localIndex){
@@ -35,7 +38,6 @@ function showImage(localIndex){
     img.src = 'img/' + images[localIndex].src;
     img.alt = images[localIndex].alt;
     img.title = images[localIndex].alt;
-    P
     //actualizeaza variabila globala cu valoarea locala
     index = localIndex;
 }
