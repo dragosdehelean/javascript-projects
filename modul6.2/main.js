@@ -11,7 +11,7 @@ function addItem() {
     
     // creaza un nou element <li> si ii pune continutul din input 
     const el = document.createElement("li");
-    el.classList.add("mb-3");
+    el.classList.add("mb-4");
 
     const span = document.createElement("span");    
     span.textContent = input.value;
