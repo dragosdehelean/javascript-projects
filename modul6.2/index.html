@@ -15,23 +15,39 @@
 <body>
   <div class="container">
 
-    <header class="mb-4">
-      <h1 id="title">My shopping list</h1>
-    </header>
-    <section class="mb-4">
-      <label for="shop">Enter a new item</label>
-      <input type="text" id="shop">
-      <button id="add">Add item</button>
-    </section>
-    
-    <ul id="lista">
+    <div class="card-deck mb-3">
+                
+      <div class="card mb-4 box-shadow col-6 mr-0">                  
+          <div class="card-body">
+            <h1 id="title" class="mb-3">My shopping list</h1> 
+            <label for="shop">Enter a new item</label>
+            <input type="text" id="shop">
+            <button id="add">Add item</button> 
+            
+            <ul id="lista">
 
-    </ul>
+            </ul>       
+          </div>
+      </div>                        
 
-  </div>
+      <div class="card mb-4 box-shadow col-6 ">                
+          <div class="card-body">
+
+            <h1 id="title" class="mb-3">Final shopping list</h1> 
+            
+            <ul id="fin">
+
+            </ul>             
+          
+          </div>
+      </div>              
+      
+    </div>   
+
+</div>
 
 
-  <script src="main.js"></script>
+<script src="main.js"></script>
 
 </body>
 

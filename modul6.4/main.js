@@ -76,8 +76,10 @@ function meniuBilute(localIndex){
  * Functie factory care intoarce o functie anonima pe post de event handler 
  * (pentru cazul in care n-am fi folosit let in for-ul din functia meniuBilute)
  * 
+ * @param { } - 
+ * @returns { } -
+ * 
  */
-
 function makeBilutaCallback(index){
     return function(){
         showImage(index);
@@ -102,3 +104,5 @@ document.getElementById("inapoi").addEventListener("click", function(){
     showImage(--index); 
     meniuBilute(index);
 });
+
+document.meniuBilute()
