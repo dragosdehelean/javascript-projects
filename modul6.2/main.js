@@ -39,7 +39,7 @@ function addItem() {
     });
 
     //pune un event listener pentru click pe "Edit"
-    edit.addEventListener("click", editItem);
+    edit.addEventListener("click", createEditFunction());
 
     //pune un event listener pentru click pe "Submit"
     submit.addEventListener("click", submitItem);
@@ -60,27 +60,35 @@ function addItem() {
  * Functie care permite editarea unui item
  * E folosit ca event handler pentru cand se da click pe butonul "edit" al unui item
  */
-function editItem(){
+function createEditFunction(){     
+    
+    let canEdit = true;
 
-    const parent = this.parentNode; // referinta la <li>
-    const span = parent.firstChild; //referinta la <span>-ul care contine textul
+    return function(){ 
+        
+        if (canEdit){
+            const parent = this.parentNode; //referinta la <li>-ul parinte
+            const span = parent.firstChild; //referinta la <span>-ul care contine textul
 
-    span.style.display = "none";
+            const editInput = document.createElement("input");                      
+            editInput.value = span.textContent;
+            editInput.classList.add("mr-2");
+            editInput.addEventListener("keyup", function(e){
+                if (e.key === "Enter"){
+                    span.textContent = this.value;
+                    span.style.display = "inline";
+                    parent.removeChild(this);
+                    canEdit = true;
+                }
+            });    
+            parent.insertBefore(editInput, span.nextSibling);
+            
+            span.style.display = "none";  
 
-    /**
-     *  Creeaza input-ul de edit 
-     */
-    const editInput = document.createElement("input");
-    editInput.value = span.textContent;
-    editInput.classList.add("mr-2");
-    editInput.addEventListener("keyup", function(e){
-        if (e.key === "Enter"){
-            span.textContent = this.value;
-            span.style.display = "inline";
-            parent.removeChild(this);
+            canEdit = false;
         }
-    });    
-    parent.insertBefore(editInput, span);
+
+    }
 
 }
 
