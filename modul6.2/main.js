@@ -57,8 +57,7 @@ function addItem() {
 }
 
 /**
- * Functie care permite editarea unui item
- * E folosit ca event handler pentru cand se da click pe butonul "edit" al unui item
+ * Functie factory care creeaza event listener-ul pentru click pe butonul "edit" al unui item
  */
 function createEditFunction(){     
     
