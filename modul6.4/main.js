@@ -20,9 +20,6 @@ let index = 0;
  * Functia care afiseaza imaginea curenta 
  * 
  * @param {number} localIndex - 
- * 
- * 
- * 
  *  
  */
 function showImage(localIndex){
@@ -54,7 +51,6 @@ function meniuBilute(localIndex){
         
         //creeaza nodul virtual cu atributele lui (id, title, adauga o noua clasa)
         biluta = document.createElement("span");
-        biluta.id = "biluta" + (i+1);
         biluta.title = images[i].alt;
         biluta.classList.add('biluta');
         if (i === localIndex){
@@ -105,4 +101,4 @@ document.getElementById("inapoi").addEventListener("click", function(){
     meniuBilute(index);
 });
 
-document.meniuBilute()
+document.meniuBilute();
