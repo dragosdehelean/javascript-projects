@@ -1,11 +1,11 @@
 const word = document.querySelector("#word");
 const button = document.querySelector("button");
 
-word.addEventListener("focus", changeBackround)
+word.addEventListener("focus", changeBackround);
 
 function changeBackround(){
 
-    this.style.backgroundColor = "yellow";
+    this.style.backgroundColor = "yellow"
 
 }
 
