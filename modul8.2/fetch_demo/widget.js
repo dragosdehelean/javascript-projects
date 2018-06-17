@@ -1,5 +1,12 @@
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'employees.json');
+/**
+ * Procedura clasica pentru a trimite un Request prin XMLHttpRequest * 
+ */
+
+// creeaza un obiect nou XMLHttpRequest
+var xhr = new XMLHttpRequest(); 
+// pregateste Request-ul
+xhr.open('GET', 'employees.json'); 
+// gestioneaza schimbarile de stare prin care va trece Request-ul 
 xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
 
@@ -18,37 +25,41 @@ xhr.onreadystatechange = function () {
         document.getElementById('employeeList').innerHTML = statusHTML;
     }
 };
+// trimite Request-ul 
 xhr.send();
 
+/**
+ * Versiunea moderna de a trimite un Request folosind API-ul Fetch
+ * Metoda globala fetch() primeste un singur argument obligatoriu: calea catre resursa pe care vrem s-o obtinem 
+ * Intoarce o Promise, care contine raspunsul HTTP (un obiect de tip Response)   
+ * Raspunsul este procesat cu metoda .then() care intoarce la randul sau o Promise
+ * Metoda .json() parseaza corpul JSON al raspunsului
+ */
 
 // fetch('employees.json')
-//     .then(parseJSON)
+//     .then(response => response.json())
 //     .then(formsList)
 //     .then(addEmployeesToPage)
 //     .catch(showError);
 
-// function parseJSON(response) {
-//     return response.json();
-// }
-
 // function formsList(employees) {
-//     var statusHTML = '<ul class="bulleted">';
+//     var outputHTML = '<ul class="bulleted">';
 //     for (var i = 0; i < employees.length; i += 1) {
 //         if (employees[i].inoffice === true) {
-//             statusHTML += '<li class="in">';
+//             outputHTML += '<li class="in">';
 //         } else {
-//             statusHTML += '<li class="out">';
+//             outputHTML += '<li class="out">';
 //         }
-//         statusHTML += employees[i].name;
-//         statusHTML += '</li>';
+//         outputHTML += employees[i].name;
+//         outputHTML += '</li>';
 //     }
-//     statusHTML += '</ul>';
+//     outputHTML += '</ul>';
 
-//     return statusHTML;
+//     return outputHTML;
 // }
 
-// function addEmployeesToPage(statusHTML) {
-//     document.getElementById('employeeList').innerHTML = statusHTML;
+// function addEmployeesToPage(outputHTML) {
+//     document.getElementById('employeeList').innerHTML = outputHTML;
 // }
 
 // function showError(error) {
