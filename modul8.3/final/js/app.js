@@ -31,7 +31,6 @@ fetch('https://dog.ceo/api/breeds/image/random')
         generateImage(data.message)
     });
 
-
 // PAS 3 - obtinem lista de rase si completam lista de optiuni a <select>-ului
 // Ce tip de data obtinem prin parsarea raspunsului?
 
@@ -44,7 +43,7 @@ fetch('https://dog.ceo/api/breeds/list')
 //       (valoarea unui <select> se obtine din proprietatea .value)
 
 
-// 4.2 ???? - cream event handler-ul: functie care primeste numele rasei si face schimbari in DOM
+// 4.2 - cream event handler-ul: functie care primeste numele rasei si face schimbari in DOM
 //     - obtinem de la API o imagine random din rasa respectiva
 //     - afisam imaginea respectiva in locul imaginii initiale; 
 //       ii schimbam si alt-ul si title-ul 
