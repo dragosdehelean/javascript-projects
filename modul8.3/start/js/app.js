@@ -1,8 +1,8 @@
 /**
- * RESURSE:
+ * RESURSE Dog API:
  * imagine random: https://dog.ceo/api/breeds/image/random
  * toate rasele: https://dog.ceo/api/breeds/list
- * imagine random dintr-o rasa anume: https://dog.ceo/api/breed/{hound}/images/random
+ * imagine random dintr-o rasa anume: https://dog.ceo/api/breed/{nume_rasa}/images/random
  */
 
 const select = document.getElementById('breeds');
@@ -14,48 +14,31 @@ const form = document.querySelector('form');
 // ------------------------------------------
 
 // PAS 1 - obtinem informatii despre o imagine random si 
-// exploram functionalitatea de baza a fetch
-// Realizam acest pas impreuna cu instructorul
+// Exploram in consola functionalitatea de baza a metodei fetch(), 
+//  cum gestionam un Response cu metoda .then(), 
+//  parsarea unui string JSON cu metoda Response.json() etc.  
 
-// fetch('https://dog.ceo/api/breeds/image/random')
-//     .then(response => response.json())
-//     .then(data => console.log(data.message));
 
-// PAS 2 - obtinem url-ul unei imagini random si o printam
+// PAS 2 -  afisam imaginea random obtinuta de la API in <div>-ul cu clasa “.card”
 
 
 
-// PAS 3 - obtinem lista de rase si completam lista de optiuni a selectului
-// Ce tip de data obtinem prin parsarea raspunsului?
+// PAS 3 - obtinem la API o lista de rasele de caini (endpoint-ul 2 de la resurse). 
+//  Completam cu ea lista de optiuni a selectului
+//  Ce tip de data obtinem prin parsarea raspunsului?
 
-// PAS 4 - obtinem o imagine in functie de rasa selectata
-// 4.1 - cream un event listner pe <select> care sa reactioneze la schimbarea optiunii
-//       (valoarea unui <select> se obtine din proprietatea .value)
-// 4.2 - cream event handler-ul: functie care primeste numele rasei si face schimbari in DOM
-//     - obtinem de la API o imagine random din rasa respectiva
-//     - afisam imaginea respectiva in locul imaginii initiale; 
-//       ii schimbam si alt-ul si title-ul 
-// 4.3 - mai punem un event listner, care sa reactioneze la click in <div>-ul cu clasa .card
-//       folosim acelasi event handler ca mai sus ca sa afisam o alta imagine random
-//       din rasa selectata 
+
+
+// PAS 4 - In functie de rasa selectata in pagina HTML, facem sa se afiseze o imagine random
+//  cu un caine din acea rasa in <div>-ul ".card"
+
+
+// PAS 5 - Facem astfel incat la click in interiorul <div>-ului cu clasa ".card" sa se afiseze o
+//  alta imagine random a unui caine din rasa selectata
 
 // ------------------------------------------
 //  HELPER FUNCTIONS
 // ------------------------------------------
-/**
- * generateImage
- * Afiseaza o imagine in interiorul div-ului cu clasa .card 
- * 
- * @param {string} src - URL-ul imaginii
- */
-
-
-/**
- * generateOptions
- * Completeaza optiunile din <select> cu rasele obtinute de la API
- * 
- * @param {Array} data - lista de rase
- */
 
 
 
@@ -63,13 +46,8 @@ const form = document.querySelector('form');
 //  EVENT LISTENERS
 // ------------------------------------------
 
-// seteaza un event listner pentru schimbarea optiunii din <select>
-
-
-// seteaza un event listner pentru click in interiorul div-ului cu clasa .card
 
 
 // ------------------------------------------
 //  POST DATA
 // ------------------------------------------
-
