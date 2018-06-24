@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "ashton",
+        "last": "white"
+      }
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "mrs",
+        "first": "amparo",
+        "last": "leon"
+      }
+    }
+  ]
+}
+
