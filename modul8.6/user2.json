@@ -1,18 +1,55 @@
-[
-  {
-    "gender": "male",
-    "name": {
-      "title": "mr",
-      "first": "ashton",
-      "last": "white"
-    }
+[{
+  "name": {
+      "adresare": "Mr.",
+      "first": "George",
+      "last": "Madalin"
   },
-  {
-    "gender": "female",
-    "name": {
-      "title": "mrs",
-      "first": "amparo",
-      "last": "leon"
-    }
-  }
+  "image": {
+      "src": "https://randomuser.me/api/"
+  },
+  "calitati": ["Fun", "Smart", "Relaxed"],
+  "sex":"M",
+  "casatorit":true,
+  ""
+}, 
+{
+  "name": {
+      "adresare": "Mr.",
+      "first": "Davin",
+      "last": "Galati"
+  },
+  "image": {
+      "src": "https://randomuser.me/api/"
+  },
+  "calitati": ["Fun", "Smart", "Relaxed"],
+  "sex":["M"],
+  "casatorit":false
+}, 
+{
+  "name": {
+      "adresare": "Mr.",
+      "first": "Hutu",
+      "last": "Bogdan"
+  },
+  "image": {
+      "src": "https://randomuser.me/api/"
+  },
+  "calitati": ["Fun", "Smart", "Relaxed"],
+  "sex":["M"],
+  "casatorit":["true"]
+}, 
+{
+  "name": {
+      "adresare": "Mr.",
+      "first": "Dragos",
+      "last": "Dehelean"
+  },
+  "image": {
+      "src": "https://randomuser.me/api/"
+  },
+  "calitati": ["Fun", "Smart", "Relaxed"],
+  "sex":["M"],
+  "casatorit":["true"]
+}
+
 ]

@@ -1,4 +1,5 @@
-// Endpoint-uri Dog API:
+
+// ENDPOINT-uri Dog API:
 // imagine random: https://dog.ceo/api/breeds/image/random
 // toate rasele: https://dog.ceo/api/breeds/list
 // imagine random dintr-o rasa: https://dog.ceo/api/breed/{nume_rasa}/images/random
@@ -18,58 +19,38 @@ const form = document.querySelector('form'); // <form>
 //     .then(data => console.log(data.message));
 
 // PAS 2: obtine o imagine random (https://dog.ceo/api/breeds/image/random) 
-// Apeleaza functia generateImage(), care afiseaza raspunsul in <div>  
+// Apeleaza functia custom generateImage, care afiseaza raspunsul in <div>  
 fetch('https://dog.ceo/api/breeds/image/random')
-  .then(response => response.json())
-  .then(data => generateImage(data.message));
+    .then(response => response.json())    
+    .then(data => generateImage(data.message));
 
 // PAS 3: obtine o lista de rase de caini (https://dog.ceo/api/breeds/list)
-// Apeleaza functia generateOptions(), care afiseaza raspunsul in <select> 
+// Apeleaza functia custom generateOptions, care afiseaza raspunsul in <select> 
 fetch('https://dog.ceo/api/breeds/list')
-  .then(response => response.json())
-  .then(data => generateOptions(data.message));
-
-
-// PAS 8 - integreaza primele doua comenzi .fetch() intr-o singura comanda Promise.all()
-// Promise.all([
-//   fetchData('https://dog.ceo/api/breeds/list'),
-//   fetchData('https://dog.ceo/api/breeds/image/random')  
-// ])
-// .then(data => {
-//   const breedList = data[0].message;
-//   const randomImage = data[1].message;
-
-//   generateOptions(breedList);
-//   generateImage(randomImage);
-// })
-
+  .then(response => response.json())  
+  .then(data => generateOptions(data.message));  
+  
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
 
 // PAS 4: la schimbarea optiunii din <select> afiseaza o imagine din rasa selectata
-select.addEventListener('change', function () {
-  const breed = this.value;
-  const url = 'https://dog.ceo/api/breed/' + breed + '/images/random';
-  fetch(url)
+select.addEventListener('change', function(){
+  const breed = this.value;  
+  const url = 'https://dog.ceo/api/breed/' + breed + '/images/random';  
+  fetch(url)  
     .then(response => response.json())
-    .then(data => generateImage(data.message, breed));
+    .then(data => generateImage(data.message, breed));  
 })
 
 // PAS 5: la click in interiorul <div>-ului afiseaza alta imagine din rasa selectata
-card.addEventListener('click', function () {
+card.addEventListener('click', function(){
   const breed = select.value;
   const url = 'https://dog.ceo/api/breed/' + breed + '/images/random';
   fetch(url)
     .then(response => response.json())
-    .then(data => generateImage(data.message, breed));
+    .then(data => generateImage(data.message, breed));     
 })
-
-
-// PAS 9 - Transmiteti datele completate in formular printr-un request POST, catre https://jsonplaceholder.typicode.com/posts
-// Printati in consola raspunsul primit de la server, impreuna cu un mesaj custom.  
-document.getElementById('submit').addEventListener('click', postData);
-
 
 // ------------------------------------------
 //  HELPER FUNCTIONS
@@ -77,41 +58,61 @@ document.getElementById('submit').addEventListener('click', postData);
 
 // generateImage(src, alt)
 // Functie custom, care afiseaza o imagine in interiorul <div>-ului  
-function generateImage(src, alt = 'Random image') {
+function generateImage(src, alt = 'Random image') {  
   const html = `
     <img src='${src}' alt='${alt}' title='${alt}'>
     <p>Click to view images of ${select.value}s</p>`;
-
-  card.innerHTML = html;
+    
+    card.innerHTML = html;
 }
 
 // generateOptions(data)
 // Functie custom, care completeaza optiunile din <select>
-function generateOptions(data) {
+function generateOptions(data){
   const options = data.map(item =>
-      `<option value='${item}'>${item}</option>`)
+    `<option value='${item}'>${item}</option>`) 
     .join('');
   select.innerHTML = options;
 }
 
 
-function postData(event) {
-  event.preventDefault();
+// PAS 7: Integreaza toate comenzile fetch in Promise.all 
+// Promise.all([
+//   fetchData('https://dog.ceo/api/breeds/list'),
+//   fetchData('https://dog.ceo/api/breeds/image/random')  
+// ])
+// .then(data => {
+//   const breedList = data[0].message;
+//   const randomImage = data[1].message;
+  
+//   generateOptions(breedList);
+//   generateImage(randomImage);
+// })
 
-  let tittle = document.getElementById('title').value;
-  let body = document.getElementById('body').value;
+// PAS 8: Posteaza 
+document.getElementById('submit').addEventListener('click', postData);
 
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      headers: new Headers(),
-      body: JSON.stringify({
-        tittle: tittle,
-        body: body
+function postData(event){
+  
+   event.preventDefault();
+
+   let url = document.querySelector('.card').firstElementChild.src;
+   let user = document.getElementById('user').value;
+   let comment = document.getElementById('comment').value;
+
+   let options = {
+      method: "POST",
+      mode: "cors",
+      headers: {
+         'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: "url=" + url + "&" + "user=" + user + "&" + "comment=" + comment
+    } 
+
+   fetch('http://localhost/post_request/index.php', options)
+      .then(response => {
+         console.log(response)
+         return response.text();
       })
-    }).then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      console.log("Gata, am postat! Acum e randul serverului sa faca ce stie el cu datele trimise...");
-    })
-    .catch((err) => console.log(err))
+      .then(data => console.log(data));
 }
