@@ -10,6 +10,7 @@ Trainer: Dragos Dehelean
 
 
 * [Practice: DOM Events](https://dragosdehelean.github.io/javascript-projects/modul6.6/)
+* [Practice: Netflix like search with a public API](https://dragosdehelean.github.io/javascript-projects/modul8.9)
 
 
 
