@@ -45,6 +45,7 @@ var timeout = null;
 var showPlace = document.getElementById('dogs');
 
 //PAS 1: preia inputul de la user cu un event listener
+// in event handler apeleaza functia de la Pasul 2 
 var search = document.getElementById("search");
 
 search.addEventListener('keyup', function(){
@@ -73,11 +74,15 @@ function getSelectedBreeds(termen){
    makeDogPromises(selectedBreeds);
 }
 
-//PAS 3: - creeaza o functie care sa preia selectedBreeds, 
+//PAS 3: - creeaza o functie care sa preia selectedBreeds (un array cu rasele corespunzatoare stringului de search), 
 // - formeaza endpoint-urile pentru interogarea API-ului
 // - ruleazea fetch si apoi parseze raspunsul json, pentru fiecare element din selectedBreeds
 // - pune toate Promise-urile obtinute astfel intr-un array dogPromises
-// -  
+// - prinde toate Promise-urile rezolvate din array cu Promise.all().then(values => ) 
+// - apeleaza o functie concatResultLists(values) care sa concateneze array-urile de url-uri de imagini 
+//   (array-uri obtinute cu values[i].message) 
+// - cu array-ul complet obtinut, apeleaza o functie care obtine n elemente random din el
+// - cu array-ul final apeleaza o functie care sa afiseze in pagina imaginile
 function makeDogPromises(selectedBreeds){
 
     const dogPromises = [];
@@ -96,7 +101,7 @@ function makeDogPromises(selectedBreeds){
         
 }
 
-// functie care concateneaza toate array-urile de tip values[i].message
+// PAS 4: functia care concateneaza toate array-urile de tip values[i].message
 function concatResultLists(values){
 
    var finalArr = [];
@@ -109,6 +114,7 @@ function concatResultLists(values){
    return finalArr;
 }
 
+// PAS 5: functia care obtine n elemente random dintr-un array trimis ca parametru
 function randomElements(arr1, n){
 
     var imageArr = []; 
@@ -122,6 +128,9 @@ function randomElements(arr1, n){
     return imageArr;
 }
 
+// PAS 6: functia care printeaza in HTML array-ul cu imaginile finale
+// PAS 7 (optional): afisati sub fiecare imagine si rasa din care face parte
+// (nota: e nevoie de un Regex putin mai complicat)
 function printImages(arr2){   
     var html = '';
     arr2.forEach(item => {
