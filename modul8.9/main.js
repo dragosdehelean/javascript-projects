@@ -57,12 +57,15 @@ search.addEventListener('keyup', function(){
 
     var termen = this.value;
     
+   console.log(termen);
+
     if (termen.length > 1){
       // Make a new timeout set to go off in 500ms
       //   timeout = setTimeout(function () {
       //       getSelectedBreeds(termen);
       //   }, 100);
       getSelectedBreeds(termen);
+     
     }
    
 });
@@ -107,8 +110,8 @@ function concatResultLists(values){
    var finalArr = [];
 
    values.forEach(element => {
-      element.message       
-    finalArr = finalArr.concat(element.message);
+      //element.message       
+      finalArr = finalArr.concat(element.message);
    });   
 
    return finalArr;
