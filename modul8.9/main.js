@@ -139,7 +139,7 @@ function printImages(arr2){
     arr2.forEach(item => {
       let reg = /[\w-]+(?=\/n)/g;
       let rasa = item.match(reg); 
-      html += '<div class="col-md-3"><img src="' + item +'" class="img-fluid">';
+      html += '<div class="col-4"><img src="' + item +'" class="img-fluid">';
       html += '<br>' + (rasa ? rasa : rasa[0]) +'</div>';      
 
     });
