@@ -48,24 +48,22 @@ var showPlace = document.getElementById('dogs');
 // in event handler apeleaza functia de la Pasul 2 
 var search = document.getElementById("search");
 
-search.addEventListener('keyup', function(){
+search.addEventListener('keyup', (e)=>{
     
     //ne asiguram ca stergem timeout-ul daca el exsita, ca sa nu avem intreruperi
-   //  if (timeout !== null){ 
-   //      clearTimeout(timeout);
-   //  }
+    // if (timeout !== null){ 
+    //     clearTimeout(timeout);
+    // }
 
-    var termen = this.value;
+    var termen = e.target.value;
     
-   console.log(termen);
+  //  console.log(termen);
 
     if (termen.length > 1){
-      // Make a new timeout set to go off in 500ms
-      //   timeout = setTimeout(function () {
-      //       getSelectedBreeds(termen);
-      //   }, 100);
-      getSelectedBreeds(termen);
-     
+      // Make a new timeout set to go off in 100ms
+      // timeout = setTimeout( ()=> {getSelectedBreeds(termen)}, 100);
+      
+      getSelectedBreeds(termen);     
     }
    
 });
